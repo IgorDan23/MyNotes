@@ -1,6 +1,7 @@
 package com.example.mynotes;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -12,21 +13,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (savedInstanceState==null){
+        if (savedInstanceState == null) {
             NameNotesFragment nameNotesFragment = NameNotesFragment.newInstance();
             getSupportFragmentManager().beginTransaction()
-                                       .replace(R.id.list,nameNotesFragment)
-                                       .commit();
+                    .replace(R.id.list, nameNotesFragment)
+                    .commit();
             if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                Notes one = new Notes("Понедельник", "23.10.2021","Погулять с собакой");
-                NotesFragment notesFragment=NotesFragment.newInstance(one);
+                Notes one = new Notes(0);
+                NotesFragment notesFragment = NotesFragment.newInstance(one);
                 getSupportFragmentManager().beginTransaction()
-                                           .replace(R.id.notes,notesFragment)
-                                           .commit();
+                        .replace(R.id.notes, notesFragment)
+                        .commit();
 
 
             }
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // ищем фрагмент, который сидит в контейнере R.id.cities_container
+        Fragment backStackFragment = (Fragment) getSupportFragmentManager()
+                .findFragmentById(R.id.list);
+        // если такой есть, и он является CoatOfArmsFragment
+        if (backStackFragment != null && backStackFragment instanceof NotesFragment) {
+            //то сэмулируем нажатие кнопки Назад
+            onBackPressed();
+        }
     }
 }

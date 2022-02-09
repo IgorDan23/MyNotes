@@ -4,14 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Notes implements Parcelable {
-    private String name;
-    private String data;
-    private String text;
-
     protected Notes(Parcel in) {
-        name = in.readString();
-        data = in.readString();
-        text = in.readString();
+        number = in.readInt();
     }
 
     public static final Creator<Notes> CREATOR = new Creator<Notes>() {
@@ -26,35 +20,19 @@ public class Notes implements Parcelable {
         }
     };
 
-    public String getName() {
-        return name;
+    public int getNumber() {
+        return number;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Notes(int number) {
+        this.number = number;
     }
 
-    public String getData() {
-        return data;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public Notes(String name, String data, String text) {
-        this.name = name;
-        this.data = data;
-        this.text = text;
-    }
+    private int number;
 
     @Override
     public int describeContents() {
@@ -63,8 +41,6 @@ public class Notes implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(name);
-        parcel.writeString(data);
-        parcel.writeString(text);
+        parcel.writeInt(number);
     }
 }
