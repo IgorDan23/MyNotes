@@ -34,12 +34,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // ищем фрагмент, который сидит в контейнере R.id.cities_container
         Fragment backStackFragment = (Fragment) getSupportFragmentManager()
                 .findFragmentById(R.id.list);
-        // если такой есть, и он является CoatOfArmsFragment
         if (backStackFragment != null && backStackFragment instanceof NotesFragment) {
-            //то сэмулируем нажатие кнопки Назад
             onBackPressed();
         }
     }
