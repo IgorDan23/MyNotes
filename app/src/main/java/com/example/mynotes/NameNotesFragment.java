@@ -83,7 +83,7 @@ public class NameNotesFragment extends Fragment {
     private void showPort() {
         NotesFragment notesFragment = NotesFragment.newInstance(currentNotes);
         getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.list, notesFragment).addToBackStack("1")
+                .add(R.id.list, notesFragment).addToBackStack("1")
                 .commit();
     }
 
