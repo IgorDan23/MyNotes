@@ -6,17 +6,24 @@
     android:clickable="true"
     android:orientation="vertical">
 
+
+    <FrameLayout
+        android:id="@+id/child_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Back" />
+        android:text="@string/back" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/remove"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Remove" />
+        android:text="@string/remove" />
 
 
 </LinearLayout>
