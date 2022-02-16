@@ -56,7 +56,9 @@ public class NotesFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setHasOptionsMenu(true);
+        if (savedInstanceState==null){
+            setHasOptionsMenu(true);
+        }
         notes = getArguments().getParcelable(KEY);
         getChildFragmentManager().beginTransaction()
                 .replace(R.id.child_frame, NotesFragmentChild.newInstance(notes))
