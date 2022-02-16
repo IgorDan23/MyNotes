@@ -1,6 +1,7 @@
 package com.example.mynotes;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.content.res.Configuration;
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
+        Toolbar toolbar = findViewById(R.id.MyToolbar);
+        setSupportActionBar(toolbar);
 
     }
 
