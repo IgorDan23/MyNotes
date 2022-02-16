@@ -1,11 +1,14 @@
 package com.example.mynotes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +35,27 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.MyToolbar);
         setSupportActionBar(toolbar);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case (R.id.action_exit):
+                finish();
+                return true;
+
+            case (R.id.action_about):
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.list,new AboutFragment()).addToBackStack("").commit();
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
