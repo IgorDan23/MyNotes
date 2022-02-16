@@ -33,7 +33,7 @@ public class NotesFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.fragment_menu,menu);
+        inflater.inflate(R.menu.fragment_menu, menu);
         menu.findItem(R.id.action_about).setVisible(false);
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -41,7 +41,7 @@ public class NotesFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case (R.id.action_toast):
-                Toast.makeText(getContext(),"Ваша заметка.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Ваша заметка.", Toast.LENGTH_LONG).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);

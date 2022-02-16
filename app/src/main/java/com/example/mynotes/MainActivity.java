@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
             case (R.id.action_about):
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.list,new AboutFragment()).addToBackStack("").commit();
+                        .replace(R.id.list, new AboutFragment()).addToBackStack("").commit();
 
         }
         return super.onOptionsItemSelected(item);

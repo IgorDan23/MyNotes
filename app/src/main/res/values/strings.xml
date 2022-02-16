@@ -8,4 +8,5 @@
     <string name="exit">exit</string>
     <string name="text_about">Приложениие заметок. \n Курс Android 1. Знакомство с платформой. </string>
     <string name="toast">toast</string>
+    <string name="clear">Clear</string>
 </resources>
