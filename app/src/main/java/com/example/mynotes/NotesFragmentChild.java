@@ -1,5 +1,10 @@
 package com.example.mynotes;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -11,6 +16,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -61,6 +67,11 @@ public class NotesFragmentChild extends Fragment {
             }
         });
 
+
+        textViewTwo.setOnClickListener(view1 -> {
+            showPush(text[notes.getNumber()]);
+        });
+
         textViewOne.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -83,5 +94,22 @@ public class NotesFragmentChild extends Fragment {
         });
 
 
+    }
+
+    private void showPush(String text) {
+        NotificationManager notificationManager = (NotificationManager) requireActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel notificationChannel = new NotificationChannel("1", "CHANNEL1", NotificationManager.IMPORTANCE_HIGH);
+            notificationChannel.setDescription("Ванжные заметки");
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+        Notification notification = new NotificationCompat.Builder(requireContext(), "1")
+                .setContentTitle("Важная заметка")
+                .setContentText(text)
+                .setSmallIcon(R.drawable.ic_baseline_adb_24)
+                .setPriority(Notification.PRIORITY_HIGH)
+                .build();
+
+        notificationManager.notify(1, notification);
     }
 }
