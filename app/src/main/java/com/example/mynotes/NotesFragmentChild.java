@@ -25,6 +25,7 @@ import java.util.List;
 public class NotesFragmentChild extends Fragment {
     private Notes notes;
     public static final String KEY = "key";
+    private ToastInterface toastInterface;
 
     public static NotesFragmentChild newInstance(Notes notes) {
         NotesFragmentChild fragment = new NotesFragmentChild();
@@ -70,6 +71,8 @@ public class NotesFragmentChild extends Fragment {
 
         textViewTwo.setOnClickListener(view1 -> { //реализуем по клику push
             showPush(text[notes.getNumber()]);
+            toastInterface = ((MainActivity) getActivity());
+            toastInterface.message("Прислали уведомление");
         });
 
         textViewOne.setOnLongClickListener(new View.OnLongClickListener() {

@@ -13,7 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ToastInterface {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,5 +69,10 @@ public class MainActivity extends AppCompatActivity {
         if (backStackFragment != null && backStackFragment instanceof NotesFragment) {
             onBackPressed();
         }
+    }
+
+    @Override
+    public void message(String mes) {
+        Toast.makeText(this, mes, Toast.LENGTH_LONG).show();
     }
 }
