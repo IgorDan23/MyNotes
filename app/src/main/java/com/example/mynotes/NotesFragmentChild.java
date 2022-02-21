@@ -68,7 +68,7 @@ public class NotesFragmentChild extends Fragment {
         });
 
 
-        textViewTwo.setOnClickListener(view1 -> {
+        textViewTwo.setOnClickListener(view1 -> { //реализуем по клику push
             showPush(text[notes.getNumber()]);
         });
 
